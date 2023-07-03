@@ -229,7 +229,7 @@ iron level, and the silicon level. The format is:
 Sector: #<num> <iron> grams iron, <silicon> milligrams silicon
 
 For example:
-
+ 
 Sector: #1 81 grams iron, 17 milligrams silicon
 
 The "Averages per sector" section lists each of the sectors that has data and

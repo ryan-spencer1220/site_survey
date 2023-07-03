@@ -6,6 +6,7 @@ class SensorData {
 
  public:
   // constructors
+  SensorData();
   SensorData(int sector, int iron, int silicon);
 
   // accessor methods;

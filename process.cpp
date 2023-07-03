@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     while (!inDatafile.eof()) {
 	inDatafile >> sector;
 	inDatafile >> iron;
-	inDatafile >> silicon;
+	inDatafile >> silicon; 
 
 	if (!inDatafile.eof()) {
 	    data.addData(sector, iron, silicon);

@@ -1,26 +1,32 @@
+#pragma once
 #include "sensordata.h"
+
+class Node {
+ public:
+  SensorData data;
+  Node* nextBySector;
+
+  Node(SensorData data) {
+    this->data = data;
+    this->nextBySector = nullptr;
+  }
+};
 
 class LinkedList {
  private:
-  struct Node {
-    SensorData data;
-    Node* nextBySector;
-  };
   Node* headBySector;
   int count;
 
  public:
   // constructors
   LinkedList();
-  LinkedList(LinkedList& linkedList);
+  LinkedList(const LinkedList& linkedList);
 
-  // destructor
+  // destructors
   ~LinkedList();
-
-  // assignment operator overloading
   void operator=(const LinkedList& linkedList);
 
-  // add & print methods
-  void addSensorData();
+  // add & print functions
+  void addSensorData(int sector, int iron, int silicon);
   void printListBySector();
 };
