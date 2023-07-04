@@ -1,3 +1,5 @@
+#pragma once
+
 class SensorData {
  private:
   int sector;

@@ -1,11 +1,5 @@
 #include "linkedlist.h"
 
-#include <cstring>
-#include <fstream>
-#include <iostream>
-
-using namespace std;
-
 // constructor
 LinkedList::LinkedList() {
   headBySector = NULL;
@@ -24,11 +18,16 @@ void LinkedList::addSensorData(int sector, int iron, int silicon) {
   Node* newNode = new Node(*newData);
   if (count == 0) {
     headBySector = newNode;
+  } else if (headBySector->data.getSector() > sector) {
+    newNode->nextBySector = headBySector;
+    headBySector = newNode;
   } else {
     Node* curr = headBySector;
-    while (curr->nextBySector) {
+    while (curr->nextBySector &&
+           curr->nextBySector->data.getSector() < sector) {
       curr = curr->nextBySector;
     }
+    newNode->nextBySector = curr->nextBySector;
     curr->nextBySector = newNode;
   }
   count++;

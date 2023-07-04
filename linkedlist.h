@@ -1,5 +1,10 @@
 #pragma once
+#include <cstring>
+#include <fstream>
+#include <iostream>
+
 #include "sensordata.h"
+using namespace std;
 
 class Node {
  public:
