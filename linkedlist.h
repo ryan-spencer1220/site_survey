@@ -10,16 +10,22 @@ class Node {
  public:
   SensorData data;
   Node* nextBySector;
+  Node* nextByIron;
+  Node* nextBySilicon;
 
   Node(SensorData data) {
     this->data = data;
     this->nextBySector = nullptr;
+    this->nextByIron = nullptr;
+    this->nextBySilicon = nullptr;
   }
 };
 
 class LinkedList {
  private:
   Node* headBySector;
+  Node* headByIron;
+  Node* headBySilicon;
   int count;
 
  public:
