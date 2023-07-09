@@ -40,4 +40,11 @@ class LinkedList {
   // add & print functions
   void addSensorData(int sector, int iron, int silicon);
   void printListBySector();
+  void printListByIron();
+  void printListBySilicon();
+
+  // helper functions
+  void addSectorData(Node* newNode);
+  void addIronData(Node* newNode);
+  void addSiliconData(Node* newNode);
 };

@@ -10,6 +10,10 @@ bool DataLogger::containsSector(int sector) { return true; }
 
 void DataLogger::removeSector(int sector) {}
 
-void DataLogger::printReport() { linkedList.printListBySector(); }
+void DataLogger::printReport() {
+  linkedList.printListBySector();
+  linkedList.printListByIron();
+  linkedList.printListBySilicon();
+}
 
 void DataLogger::printSectorList() {}
