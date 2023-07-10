@@ -37,16 +37,14 @@ void LinkedList::operator=(const LinkedList& linkedList) {
     count = 0;
     curr = linkedList.headBySector;
     while (curr) {
-      addSensorData(curr->data.getSector(), curr->data.getIron(),
-                    curr->data.getSilicon());
+      addSensorData(&curr->data);
       curr = curr->nextBySector;
     }
   }
 }
 
 // add & print methods
-void LinkedList::addSensorData(int sector, int iron, int silicon) {
-  SensorData* newData = new SensorData(sector, iron, silicon);
+void LinkedList::addSensorData(SensorData* newData) {
   Node* newNode = new Node(*newData);
   addSectorData(newNode);
   addIronData(newNode);
@@ -118,7 +116,7 @@ void LinkedList::printListBySector() {
 
 void LinkedList::printListByIron() {
   Node* curr = headByIron;
-  cout << "Data by Iron" << endl;
+  cout << "Data by Iron Level" << endl;
   while (curr) {
     cout << "Sector: #" << curr->data.getSector() << " " << curr->data.getIron()
          << " grams iron, " << curr->data.getSilicon() << " milligrams silicon"
@@ -129,11 +127,53 @@ void LinkedList::printListByIron() {
 
 void LinkedList::printListBySilicon() {
   Node* curr = headBySilicon;
-  cout << "Data by Silicon" << endl;
+  cout << "Data by Silicon Level" << endl;
   while (curr) {
     cout << "Sector: #" << curr->data.getSector() << " " << curr->data.getIron()
          << " grams iron, " << curr->data.getSilicon() << " milligrams silicon"
          << endl;
     curr = curr->nextBySilicon;
+  }
+}
+
+void LinkedList::printAverageBySector() {
+  Node* curr = headBySector;
+  int sector = 1;
+  while (curr) {
+    int iron = 0;
+    int silicon = 0;
+    int count = 0;
+    while (curr && curr->data.getSector() == sector) {
+      iron += curr->data.getIron();
+      silicon += curr->data.getSilicon();
+      count++;
+      curr = curr->nextBySector;
+    }
+    if (iron || silicon) {
+      cout << "Sector: #" << sector << " " << iron / count << " grams iron, "
+           << silicon / count << " milligrams silicon" << endl;
+    } else {
+      cout << "Sector: #" << sector << "  -- no data --" << endl;
+    }
+    sector++;
+  }
+}
+
+bool LinkedList::containsSector(int sector) {
+  Node* curr = headBySector;
+  while (curr) {
+    if (curr->data.getSector() == sector) {
+      return true;
+    }
+    curr = curr->nextBySector;
+  }
+  return false;
+}
+
+void LinkedList::printSectorList() {
+  Node* curr = headBySector;
+  while (curr) {
+    cout << curr->data.getSector() << " ";
+    curr = curr->nextBySector;
   }
 }

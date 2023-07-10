@@ -38,10 +38,13 @@ class LinkedList {
   void operator=(const LinkedList& linkedList);
 
   // add & print functions
-  void addSensorData(int sector, int iron, int silicon);
+  void addSensorData(SensorData* newData);
   void printListBySector();
   void printListByIron();
   void printListBySilicon();
+  void printAverageBySector();
+  bool containsSector(int sector);
+  void printSectorList();
 
   // helper functions
   void addSectorData(Node* newNode);
