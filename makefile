@@ -1,15 +1,13 @@
-CC = g++
-CPPFLAGS = -std=c++11 -Wall -g
+CC=g++
+CPPFLAGS = -std=c++11 -I. -g
+DEPS = dlist.h
+OBJ = datalogger.o linkedlist.o node.o process.o sensordata.o
 
-process: datalogger.o linkedlist.o sensordata.o process.o
+%.o: %.cpp $(DEPS)
+		$(CC) $(CPPFLAGS) -c -o $@ $<
 
-datalogger.o: datalogger.h linkedlist.h
-
-linkedlist.o: linkedlist.h sensordata.h
-
-sensordata.o: sensordata.h
-
-process.o: datalogger.h
+main: $(OBJ)
+		$(CC) $(CPPFLAGS) -o $@ $^
 
 clean:
-	rm main *.o
+		rm	-f *.o main

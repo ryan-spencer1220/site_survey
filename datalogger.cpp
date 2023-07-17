@@ -11,7 +11,7 @@ bool DataLogger::containsSector(int sector) {
   return linkedList.containsSector(sector);
 }
 
-void DataLogger::removeSector(int sector) {}
+void DataLogger::removeSector(int sector) { linkedList.removeSector(sector); }
 
 void DataLogger::printReport() {
   cout << "--------------------------------------------------------------------"

@@ -213,7 +213,7 @@ sections. Each section is described in more detail below. The example output
 files that are included with the assignment show the exact format for each.
 
   - Data values
-  - Averages per sector
+  - Averages per sector 
   - Bad sectors
 
 The "Data values" section lists all of the values three times. The first time

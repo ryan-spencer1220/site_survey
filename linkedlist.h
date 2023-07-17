@@ -3,23 +3,9 @@
 #include <fstream>
 #include <iostream>
 
+#include "node.h"
 #include "sensordata.h"
 using namespace std;
-
-class Node {
- public:
-  SensorData data;
-  Node* nextBySector;
-  Node* nextByIron;
-  Node* nextBySilicon;
-
-  Node(SensorData data) {
-    this->data = data;
-    this->nextBySector = nullptr;
-    this->nextByIron = nullptr;
-    this->nextBySilicon = nullptr;
-  }
-};
 
 class LinkedList {
  private:
@@ -33,11 +19,12 @@ class LinkedList {
   LinkedList();
   LinkedList(const LinkedList& linkedList);
 
-  // destructors
+  // destructor
   ~LinkedList();
+
   void operator=(const LinkedList& linkedList);
 
-  // add & print functions
+  // CRUD functions
   void addSensorData(SensorData* newData);
   void printListBySector();
   void printListByIron();
@@ -45,9 +32,13 @@ class LinkedList {
   void printAverageBySector();
   bool containsSector(int sector);
   void printSectorList();
+  void removeSector(int sector);
 
   // helper functions
   void addSectorData(Node* newNode);
   void addIronData(Node* newNode);
   void addSiliconData(Node* newNode);
+  void removeSectorData(int sector);
+  void removeIronData(int sector);
+  void removeSiliconData(int sector);
 };

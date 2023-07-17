@@ -177,3 +177,58 @@ void LinkedList::printSectorList() {
     curr = curr->nextBySector;
   }
 }
+
+void LinkedList::removeSector(int sector) {
+  removeSectorData(sector);
+  removeIronData(sector);
+  removeSiliconData(sector);
+  count--;
+}
+
+void LinkedList::removeSectorData(int sector) {
+  Node* curr = headBySector;
+  Node* prev = NULL;
+  while (curr && curr->data.getSector() != sector) {
+    prev = curr;
+    curr = curr->nextBySector;
+  }
+  if (curr) {
+    if (prev) {
+      prev->nextBySector = curr->nextBySector;
+    } else {
+      headBySector = curr->nextBySector;
+    }
+  }
+}
+
+void LinkedList::removeIronData(int sector) {
+  Node* curr = headByIron;
+  Node* prev = NULL;
+  while (curr && curr->data.getSector() != sector) {
+    prev = curr;
+    curr = curr->nextByIron;
+  }
+  if (curr) {
+    if (prev) {
+      prev->nextByIron = curr->nextByIron;
+    } else {
+      headByIron = curr->nextByIron;
+    }
+  }
+}
+
+void LinkedList::removeSiliconData(int sector) {
+  Node* curr = headBySilicon;
+  Node* prev = NULL;
+  while (curr && curr->data.getSector() != sector) {
+    prev = curr;
+    curr = curr->nextBySilicon;
+  }
+  if (curr) {
+    if (prev) {
+      prev->nextBySilicon = curr->nextBySilicon;
+    } else {
+      headBySilicon = curr->nextBySilicon;
+    }
+  }
+}
